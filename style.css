@@ -2,16 +2,17 @@
    Tokens
 =================================================== */
 :root {
-  --bg:        #0F1220;
-  --surface:   #171B2E;
-  --surface-2: #1D2238;
-  --border:    #2A2F49;
-  --text:      #ECEBF5;
-  --text-muted:#9195B2;
-  --accent:    #7C5CFF;
-  --accent-dim:#5A3FD1;
-  --accent-2:  #37D6A0;
-  --accent-warn:#FFB454;
+  --bg:        #F6F9FD;
+  --surface:   #FFFFFF;
+  --surface-2: #EEF3FA;
+  --border:    #DCE6F2;
+  --text:      #0F172A;
+  --text-muted:#4B5768;
+  --accent:    #2563EB;
+  --accent-dim:#1D4ED8;
+  --accent-2:  #0EA5E9;
+  --accent-warn:#F59E0B;
+  --shadow-card: 0 1px 3px rgba(15,23,42,0.06), 0 1px 2px rgba(15,23,42,0.04);
 
   --font-mono: 'JetBrains Mono', ui-monospace, monospace;
   --font-body: 'Inter', system-ui, sans-serif;
@@ -42,8 +43,8 @@ h1, h2, h3 { margin: 0; font-family: var(--font-mono); }
 
 .noise {
   position: fixed; inset: 0; pointer-events: none; z-index: 1;
-  background-image: radial-gradient(circle at 20% 20%, rgba(124,92,255,0.08), transparent 40%),
-                     radial-gradient(circle at 85% 75%, rgba(55,214,160,0.06), transparent 45%);
+  background-image: radial-gradient(circle at 20% 20%, rgba(37,99,235,0.07), transparent 40%),
+                     radial-gradient(circle at 85% 75%, rgba(14,165,233,0.06), transparent 45%);
 }
 
 :focus-visible {
@@ -57,7 +58,7 @@ h1, h2, h3 { margin: 0; font-family: var(--font-mono); }
 =================================================== */
 .navbar {
   position: sticky; top: 0; z-index: 50;
-  background: rgba(15,18,32,0.82);
+  background: rgba(246,249,253,0.8);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--border);
 }
@@ -168,7 +169,7 @@ h1, h2, h3 { margin: 0; font-family: var(--font-mono); }
   border: 1px solid var(--border);
   border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 30px 60px -20px rgba(0,0,0,0.6);
+  box-shadow: 0 25px 50px -20px rgba(15,23,42,0.18);
 }
 .terminal-bar {
   display: flex; align-items: center; gap: 8px;
@@ -187,7 +188,7 @@ h1, h2, h3 { margin: 0; font-family: var(--font-mono); }
   font-size: 13.5px;
   padding: 20px;
   min-height: 260px;
-  color: #C9CBE0;
+  color: #33415C;
 }
 .terminal-body p { margin: 0 0 8px; white-space: pre-wrap; }
 .terminal-body .prompt { color: var(--accent-2); margin-right: 8px; }
@@ -228,7 +229,7 @@ h1, h2, h3 { margin: 0; font-family: var(--font-mono); }
 /* Skills */
 .stack-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 18px;
 }
 @media (max-width: 700px) { .stack-grid { grid-template-columns: 1fr; } }
@@ -238,6 +239,7 @@ h1, h2, h3 { margin: 0; font-family: var(--font-mono); }
   border: 1px solid var(--border);
   border-radius: 10px;
   padding: 22px 24px;
+  box-shadow: var(--shadow-card);
 }
 .stack-card h3 {
   font-size: 13px;
@@ -267,7 +269,7 @@ h1, h2, h3 { margin: 0; font-family: var(--font-mono); }
   position: absolute; left: -32px; top: 6px;
   width: 11px; height: 11px; border-radius: 50%;
   background: var(--accent-2);
-  box-shadow: 0 0 0 4px rgba(55,214,160,0.15);
+  box-shadow: 0 0 0 4px rgba(14,165,233,0.15);
 }
 .commit-line {
   display: flex; gap: 12px; align-items: center; flex-wrap: wrap;
@@ -289,6 +291,7 @@ h1, h2, h3 { margin: 0; font-family: var(--font-mono); }
 .commit-notes li::before {
   content: "→"; position: absolute; left: 0; color: var(--accent);
 }
+.commit + .commit { margin-top: 40px; }
 
 /* Projects */
 .project-grid {
@@ -304,9 +307,14 @@ h1, h2, h3 { margin: 0; font-family: var(--font-mono); }
   border-radius: 12px;
   padding: 24px;
   display: flex; flex-direction: column; gap: 14px;
-  transition: border-color 0.2s ease, transform 0.2s ease;
+  box-shadow: var(--shadow-card);
+  transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
-.project-card:hover { border-color: var(--accent-dim); transform: translateY(-3px); }
+.project-card:hover {
+  border-color: var(--accent-dim);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 24px -12px rgba(37,99,235,0.25);
+}
 
 .project-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; }
 .project-head h3 { font-size: 17px; line-height: 1.35; }
@@ -319,8 +327,8 @@ h1, h2, h3 { margin: 0; font-family: var(--font-mono); }
   border-radius: 20px;
   border: 1px solid var(--border);
 }
-.status-done { color: var(--accent-2); border-color: rgba(55,214,160,0.3); }
-.status-progress { color: var(--accent-warn); border-color: rgba(255,180,84,0.3); }
+.status-done { color: var(--accent-2); border-color: rgba(14,165,233,0.3); }
+.status-progress { color: var(--accent-warn); border-color: rgba(245,158,11,0.3); }
 
 .project-card p { color: var(--text-muted); font-size: 14.5px; margin: 0; }
 
@@ -339,6 +347,7 @@ h1, h2, h3 { margin: 0; font-family: var(--font-mono); }
   border-left: 3px solid var(--accent);
   border-radius: 8px;
   padding: 20px;
+  box-shadow: var(--shadow-card);
 }
 .edu-card h3 { font-size: 15.5px; margin-bottom: 6px; }
 .edu-sub { color: var(--text-muted); font-size: 13.5px; margin: 0; }
@@ -367,9 +376,14 @@ h1, h2, h3 { margin: 0; font-family: var(--font-mono); }
   border-radius: 10px;
   padding: 18px;
   display: flex; flex-direction: column; gap: 6px;
-  transition: border-color 0.2s ease, transform 0.2s ease;
+  box-shadow: var(--shadow-card);
+  transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
-.contact-card:hover { border-color: var(--accent-2); transform: translateY(-2px); }
+.contact-card:hover {
+  border-color: var(--accent-2);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px -10px rgba(14,165,233,0.3);
+}
 .contact-label {
   font-family: var(--font-mono); font-size: 11px; text-transform: uppercase;
   letter-spacing: 0.06em; color: var(--accent-2);
@@ -384,15 +398,4 @@ h1, h2, h3 { margin: 0; font-family: var(--font-mono); }
   color: var(--text-muted);
   font-family: var(--font-mono);
   font-size: 12.5px;
-}
-.experience-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 2rem;
-  align-items: start;
-}
-@media (max-width: 768px) {
-  .experience-grid {
-    grid-template-columns: 1fr;
-  }
 }

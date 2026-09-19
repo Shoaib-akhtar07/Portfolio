@@ -6,11 +6,12 @@ const lines = [
   { text: "", type: "muted" },
   { text: "> Loading developer profile", type: "muted" },
   { text: "  name:  Shoaib Akhtar", type: "key" },
-  { text: "  role:  Full Stack .NET Developer", type: "key" },
+  { text: "  role:  Full-Stack .NET Developer", type: "key" },
   { text: "  base:  Rawalpindi, Pakistan", type: "key" },
-  { text: "  focus: ASP.NET Core MVC · C# · SQL Server", type: "key" },
+  { text: "  focus: ASP.NET Core · C# · REST APIs · SQL", type: "key" },
+  { text: "  work:  Enterprise Apps · SaaS · Business Systems", type: "key" },
   { text: "", type: "muted" },
-  { text: "Now listening on https://portfolio.local", type: "ok" },
+  { text: "Ready. Scroll to explore ↓", type: "ok" },
 ];
 
 const body = document.getElementById("terminalBody");
